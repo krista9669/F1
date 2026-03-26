@@ -36,19 +36,7 @@ Produces a scaled, rotated map of the circuit with:
 
 ---
 
-## Installation
-
-```bash
-pip install fastf1 numpy matplotlib
-```
-
----
-
 ## Usage
-
-```bash
-python track_map.py
-```
 
 On first run, session data is fetched from the F1 API and written to a local `cache/` folder. Subsequent runs load from cache and execute significantly faster.
 
@@ -70,9 +58,3 @@ session = fastf1.get_session(2021, 'French Grand Prix', 'R')
 - Requires an active internet connection on first run to fetch session data
 - Position data is sourced from the fastest lap, which best represents the full track layout
 - The rotation transformation ensures the circuit is displayed in its conventional orientation
-
----
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
