@@ -40,16 +40,6 @@ Produces a scaled, rotated map of the circuit with:
 
 On first run, session data is fetched from the F1 API and written to a local `cache/` folder. Subsequent runs load from cache and execute significantly faster.
 
-To visualize a different race, update these parameters in the script:
-
-```python
-session = fastf1.get_session(2021, 'French Grand Prix', 'R')
-#                             year   event name          session type
-#                                                        'R' = Race
-#                                                        'Q' = Qualifying
-#                                                        'FP1' / 'FP2' / 'FP3'
-```
-
 ---
 
 ## Notes
