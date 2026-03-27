@@ -7,7 +7,7 @@ A set of Formula 1 data visualization scripts built with FastF1 and Matplotlib. 
 ## Visualizations
 
 ### 1. Circuit Map
-> `track_map.py`
+> `draw_circuit.py`
 
 Generates an annotated map of a circuit using GPS position data from the fastest lap. Corner numbers and labels are projected outward from the track using offset vectors, matching the circuit's official orientation.
 
@@ -28,7 +28,7 @@ Generates an annotated map of a circuit using GPS position data from the fastest
 ---
 
 ### 2. Race Position Chart
-> `position_changes.py`
+> `driver_standings.py`
 
 Plots every driver's position across all race laps on a single chart. Each driver is rendered in their official team color with distinct line styles to avoid overlap.
 
