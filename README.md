@@ -94,7 +94,6 @@ pip install fastf1 numpy matplotlib plotly pandas
 
 ```python
 session = fastf1.get_session(2021, 'French Grand Prix', 'R')
-#                             year   event name           session type
 ```
 
 **Season summary** — update the season variable:
