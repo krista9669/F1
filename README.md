@@ -1,6 +1,6 @@
 # F1 Data Visualizations
 
-A set of Formula 1 data visualization scripts built with FastF1 and Matplotlib. Each script pulls real telemetry and timing data to generate accurate, race-specific plots.
+A set of Formula 1 data visualization scripts built with FastF1, Matplotlib, and Plotly. Each script pulls real telemetry and timing data to generate accurate, race-specific plots.
 
 ---
 
@@ -12,9 +12,9 @@ A set of Formula 1 data visualization scripts built with FastF1 and Matplotlib. 
 Generates an annotated map of a circuit using GPS position data from the fastest lap. Corner numbers and labels are projected outward from the track using offset vectors, matching the circuit's official orientation.
 
 **Output**
-- Track outline from real onboard position data
+- Track outline drawn from real onboard position data
 - All corners labeled with official number and letter (e.g. `1`, `6A`, `6B`)
-- Leader lines from each corner marker to its position on track
+- Leader lines connecting each corner marker to its position on track
 - Circuit location as the plot title
 
 **How It Works**
@@ -47,6 +47,26 @@ Plots every driver's position across all race laps on a single chart. Each drive
 
 ---
 
+### 3. Season Summary Heatmap
+> `season_summary.py`
+
+Produces an interactive heatmap of every driver's points haul across an entire F1 season. Sprint race points are included where applicable. Hovering over any cell reveals the driver, race name, points scored, and finishing position.
+
+**Output**
+- Per-round points heatmap with drivers sorted by total points (lowest at bottom)
+- Separate total points column alongside the main heatmap
+- Points scored overlaid as text on each cell
+- Hover tooltips showing driver, race, points, and finishing position
+
+**How It Works**
+1. Fetches the full season schedule using `ff1.get_event_schedule`
+2. Loads race results for every round (laps and telemetry skipped for speed)
+3. Detects sprint weekends via `EventFormat` and adds sprint points where applicable
+4. Pivots the data into a driver × round matrix
+5. Sorts drivers by total points and renders a two-panel interactive Plotly heatmap
+
+---
+
 ## Tech Stack
 
 | Tool | Purpose |
@@ -54,24 +74,37 @@ Plots every driver's position across all race laps on a single chart. Each drive
 | Python 3.x | Core language |
 | FastF1 | F1 session, telemetry, and timing data |
 | NumPy | Rotation matrix and coordinate operations |
-| Matplotlib | All plotting and visualization |
+| Matplotlib | Static track and position plotting |
+| Plotly | Interactive season summary heatmap |
+| pandas | Data wrangling and pivot tables |
 
 ---
 
-## Changing the Race
+## Installation
 
-Both scripts can be pointed at any F1 session by updating a single line:
+```bash
+pip install fastf1 numpy matplotlib plotly pandas
+```
+
+---
+
+## Changing the Race or Season
+
+**Circuit map and position chart** — update the `get_session` call:
 
 ```python
-# track_map.py
 session = fastf1.get_session(2021, 'French Grand Prix', 'R')
+#                             year   event name           session type
+```
 
-# position_changes.py
-session = fastf1.get_session(2023, 'Japanese Grand Prix', 'R')
+**Season summary** — update the season variable:
+
+```python
+season = 2024
 ```
 
 | Parameter | Options |
 |---|---|
 | Year | Any season from 2018 onwards |
 | Event | Full Grand Prix name (e.g. `'Monaco Grand Prix'`) |
-| Session | `'R'` Race · `'Q'` Qualifying · `'FP1'` `'FP2'` `'FP3'` |
+| Session | `'R'` Race · `'Q'` Qualifying · `'S'` Sprint · `'FP1'` `'FP2'` `'FP3'` |
