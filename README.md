@@ -17,7 +17,7 @@ Generates an annotated map of a circuit using GPS position data from the fastest
 - Leader lines connecting each corner marker to its position on track
 - Circuit location as the plot title
 
-![alt text](image.png)
+<img width="1524" height="859" alt="image" src="https://github.com/user-attachments/assets/be7766d0-5bc2-41c9-a3ca-c40d93c55f76" />
 
 **How It Works**
 1. Loads race session data using FastF1
@@ -40,7 +40,7 @@ Plots every driver's position across all race laps on a single chart. Each drive
 - Y-axis inverted so P1 appears at the top
 - Driver abbreviation legend positioned outside the plot area
 
-![alt text](image-1.png)
+<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/4288e017-cffd-4401-b145-eddebd071648" />
 
 **How It Works**
 1. Loads race session lap data using FastF1
@@ -62,7 +62,7 @@ Produces an interactive heatmap of every driver's points haul across an entire F
 - Points scored overlaid as text on each cell
 - Hover tooltips showing driver, race, points, and finishing position
 
-![alt text](image-2.png)
+<img width="1059" height="912" alt="image" src="https://github.com/user-attachments/assets/c22678c0-15b7-4079-af01-57034d7e3a99" />
 
 **How It Works**
 1. Fetches the full season schedule using `ff1.get_event_schedule`
